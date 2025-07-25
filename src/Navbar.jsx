@@ -1,6 +1,6 @@
 import './Navbar.css';
 import { Link as ScrollLink } from 'react-scroll';
-import { FaUserCircle, FaBars } from 'react-icons/fa';
+import { FaUserCircle } from 'react-icons/fa';
 import { useState } from 'react';
 
 const navItems = [
@@ -14,19 +14,35 @@ const navItems = [
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' || e.key === ' ') toggleMenu();
+  };
+
   return (
     <nav className="navbar">
       <a href="#home" className="navbar-brand" aria-label="Go to Home">
-        <FaUserCircle size={28} color="#fff" style={{marginRight: 10}} />
+        <FaUserCircle size={28} color="#fff" style={{ marginRight: 10 }} />
         <span className="navbar-logo-text gradient-text">SATYANAND YADAV</span>
       </a>
-      <button className={`navbar-toggle${menuOpen ? ' open' : ''}`} aria-label={menuOpen ? 'Close navigation' : 'Open navigation'} onClick={() => setMenuOpen(!menuOpen)}>
+
+      <div
+        className={`navbar-toggle${menuOpen ? ' open' : ''}`}
+        onClick={toggleMenu}
+        onKeyDown={handleKeyDown}
+        role="button"
+        tabIndex={0}
+        aria-label={menuOpen ? 'Close navigation' : 'Open navigation'}
+      >
         <span className="bar"></span>
         <span className="bar"></span>
         <span className="bar"></span>
-      </button>
-      <ul className={`navbar-links${menuOpen ? ' open' : ''}`}> 
-        {navItems.map(item => (
+      </div>
+
+      <ul className={`navbar-links${menuOpen ? ' open' : ''}`}>
+        {navItems.map((item) => (
           <li key={item.to}>
             <ScrollLink
               to={item.to}
@@ -37,6 +53,7 @@ function Navbar() {
               activeClass="active"
               tabIndex={0}
               aria-label={`Go to ${item.name}`}
+              onClick={() => setMenuOpen(false)}
             >
               {item.name}
             </ScrollLink>
@@ -47,4 +64,4 @@ function Navbar() {
   );
 }
 
-export default Navbar; 
+export default Navbar;
