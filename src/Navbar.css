@@ -336,7 +336,7 @@
     100% {
       opacity: 1;
       transform: translateY(0) scale(1);
-      max-height: 400px;
+      max-height: 40px;
     }
   }
   

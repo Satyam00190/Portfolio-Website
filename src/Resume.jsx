@@ -39,7 +39,7 @@ function Resume() {
           <p style={{fontSize: '1.15rem', margin: '1.2em 0 1.5em 0', color: '#222', fontWeight: 500}}>
             MCA student and web developer with a strong foundation in computer science and hands-on experience in modern web development. Skilled in React, Node.js, and building responsive, user-centric applications.
           </p>
-          <a href="/Satayanand yadav resume (2) (1).pdf" download style={{
+          <a href={"satyanandyadav.pdf"} download style={{
             display: 'inline-block',
             padding: '1em 2.5em',
             background: 'linear-gradient(90deg, #646cff 0%, #a5b4fc 100%)',
